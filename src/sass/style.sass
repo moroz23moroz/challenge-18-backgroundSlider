@@ -2,19 +2,29 @@
 @import 'base/fonts'
 @import 'base/variables'
 
-html,
-body
-    height: 100%
-
 body
     margin: 0
     display: flex
     flex-direction: column
     align-items: center
     justify-content: center
-    // background: $dark-color
-    // font-family: $lato
-    // color: $main-color
+    height: 100vh
+    overflow: hidden
+    background-image: url('../img/background-1.jpg')
+    background-size: cover
+    background-position: center center
+    font-family: $comfortaa, sans-serif
+    transition: 0.4s
+    transition-timing-function: ease
+    &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100vh
+        background-color: rgba(0, 0, 0, .7)
+        z-index: -1
 
 *
     box-sizing: border-box
@@ -26,11 +36,7 @@ html
 button
     padding: 0
     background-color: transparent
-    border: none
-
-h1, h2, h3, h4
-    margin: 0
-    font-weight: normal
+    border: 2px solid orange
 
 img
     width: auto
@@ -42,15 +48,42 @@ iframe, img, svg, video
     vertical-align: top
     height: auto
 
-p
-    margin: 0
+.slider
+    &-container
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+        height: 70vh
+        width: 70vw
+        position: relative
+        overflow: hidden
 
-ul
-    margin: 0
-    padding-left: 0
+.slide
+    opacity: 0
+    height: 100vh
+    width: 100vw
+    background-size: cover
+    background-position: center center
+    position: absolute
+    top: -15vh
+    left: -15vh
+    transition: 0.4s
+    transition-timing-function: ease
+    z-index: 1
+    &.active
+        opacity: 1
 
-li
-    list-style-type: none
+.arrow
+    position: fixed
+    color: whitesmoke
+    padding: 20px
+    font-size: 30px
+    top: 50%
+    transform: translateY(-50%)
+    cursor: pointer
+    &:focus
+        outline: 0
 
-a
-    text-decoration: none
+.left-arrow
+    left: calc( 15vw - 65px )
+
+.right-arrow
+    right: calc( 15vw - 65px )
